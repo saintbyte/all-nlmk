@@ -1,0 +1,33 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - "5432:5432"
+  frontend:
+    build:
+      context: ./frontend-nlmk
+    command: npm start
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - "3000:3000"
+  backend:
+    build:
+      context: ./backend-nlmk
+    command: gunicorn src.index:app
+    environment:
+      PORT: 8000
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - "8000:8000"
+
+
