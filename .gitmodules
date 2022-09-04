@@ -1,0 +1,6 @@
+[submodule "frontend-nlmk"]
+	path = frontend-nlmk
+	url = git@github.com:saintbyte/frontend-nlmk.git
+[submodule "backend-nlmk"]
+	path = backend-nlmk
+	url = git@github.com:saintbyte/backend-nlmk.git
